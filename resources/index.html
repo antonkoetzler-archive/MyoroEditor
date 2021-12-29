@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/neutralino.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/linter.js"></script>
+  <script>var currentTab = "1";</script>
+</head>
+
+<body>
+  <!-- Menubar -->
+  <header id="menubar">
+    <!-- "File" -->
+    <div>
+      <button class="menubarIcon" onclick="openMenubarIconDropdown('fileDropdown')">File</button>
+      <ul class="menubarIconDropdown" id="fileDropdown">
+        <li class="menubarIconDropdownOption" onclick="newTab()">New ~ Ctrl + T</li>
+        <li class="menubarIconDropdownOption" onclick="openFile()">Open ~ Ctrl + O</li>
+        <li class="menubarIconDropdownOption" onclick="toggleDirectoryContainer()">Open Folder ~ Ctrl + Shift + O</li>
+        <li class="menubarIconDropdownOption" onclick="closeTab()">Close tab ~ Ctrl + W</li>
+        <li class="menubarIconDropdownOption" onclick="save()">Save ~ Ctrl + S</li>
+        <li class="menubarIconDropdownOption" onclick="saveAs()">Save As ~ Ctrl + Shift + S</li>
+        <li class="menubarIconDropdownOption" onclick="exit()">Exit ~ Ctrl + Q</li>
+      </ul>
+    </div>
+
+    <!-- Separator -->
+    <div class="separator"></div>
+
+    <!-- Separator -->
+    <div class="separator"></div>
+
+    <!-- "View" -->
+    <div>
+      <button class="menubarIcon" onclick="openMenubarIconDropdown('viewDropdown')">View</button>
+      <ul class="menubarIconDropdown" id="viewDropdown">
+        <li class="menubarIconDropdownOption" onclick="zoom('=')">Zoom In ~ Ctrl + =</li>
+        <li class="menubarIconDropdownOption" onclick="zoom('-')">Zoom Out ~ Ctrl + -</li>
+        <li class="menubarIconDropdownOption" onclick="toggleSidebar()">Enable/Disable Sidebar ~ Alt + S</li>
+      </ul>
+    </div>
+
+    <!-- Separator -->
+    <div class="separator"></div>
+  </header>
+
+  <!-- Sidebar & Text -->
+  <div id="textSidebarFlexBox">
+    <!-- Sidebar -->
+    <ul id="sidebar"></ul>
+
+    <section id="fileContainer">
+      <article id="tabContainer"><button class="tab" id="1" name="" onclick="changeTab(this)" style="background: #EDE6D6; color: #181818;">New File</button></article>
+
+      <textarea id="text" placeholder="Start typing here..." onkeydown="lint(this)" oninput="addAsterisk()" autofocus></textarea>
+    </section>
+  </div>
+
+  <!-- Open a directory -->
+  <div id="directoryContainer">
+    <input type="text" placeholder="Enter directory" id="directoryName" onkeydown="openDirEnterPress()">
+    <button id="directoryButton" onclick="openDirectory()">Open</button>
+  </div>
+</body>
+
+</html>
